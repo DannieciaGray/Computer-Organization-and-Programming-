@@ -1,0 +1,178 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\danni> ssh dgray43@snowball.cs.gsu.edu
+The authenticity of host 'snowball.cs.gsu.edu (131.96.155.217)' can't be established.
+ED25519 key fingerprint is SHA256:PhkVVNTJ92YR6OOyawbf/A3jK6kuBJuHBivqDl8HBJ0.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'snowball.cs.gsu.edu' (ED25519) to the list of known hosts.
+dgray43@snowball.cs.gsu.edu's password:
+Permission denied, please try again.
+dgray43@snowball.cs.gsu.edu's password:
+Creating home directory for dgray43.
+Last failed login: Fri Jan 24 13:28:51 EST 2025 from 131.96.221.193 on ssh:notty
+There was 1 failed login attempt since the last successful login.
+   +
+   |   GSU Computer Science
+   |   Instructional Server
+   |   SNOWBALL.cs.gsu.edu
+   +
+[dgray43@gsuad.gsu.edu@snowball ~]$ script lab1.log
+Script started, file is lab1.log
+[dgray43@gsuad.gsu.edu@snowball ~]$ ls
+lab1.log
+[dgray43@gsuad.gsu.edu@snowball ~]$
+[dgray43@gsuad.gsu.edu@snowball ~]$ /*
+ld
+*/
+
+#include <stdio.h>
+
+int main (int argc, char *argv[]) {
+
+   printf("hello world.\n");
+
+ bash: /bin: Is a directory
+[dgray43@gsuad.gsu.edu@snowball ~]$    hello world
+bash: hello: command not found
+[dgray43@gsuad.gsu.edu@snowball ~]$ */
+bash: */: No such file or directory
+[dgray43@gsuad.gsu.edu@snowball ~]$
+[dgray43@gsuad.gsu.edu@snowball ~]$ #include <stdio.h>
+[dgray43@gsuad.gsu.edu@snowball ~]$
+[dgray43@gsuad.gsu.edu@snowball ~]$ int main (int argc, char *argv[]) {
+bash: syntax error near unexpected token `('
+[dgray43@gsuad.gsu.edu@snowball ~]$
+[dgray43@gsuad.gsu.edu@snowball ~]$    printf("hello world.\n");
+bash: syntax error near unexpected token `"hello world.\n"'
+[dgray43@gsuad.gsu.edu@snowball ~]$
+[dgray43@gsuad.gsu.edu@snowball ~]$    return 0;
+bash: return: can only `return' from a function or sourced script
+[dgray43@gsuad.gsu.edu@snowball ~]$ }/*
+bash: }/*: No such file or directory
+[dgray43@gsuad.gsu.edu@snowball ~]$ /* hello world */
+bash: /bin: Is a directory
+[dgray43@gsuad.gsu.edu@snowball ~]$ #include <stdio.h>
+[dgray43@gsuad.gsu.edu@snowball ~]$ int main (int argc, char *argv[]) { printf("hello world.\n");
+bash: syntax error near unexpected token `('
+[dgray43@gsuad.gsu.edu@snowball ~]$  int main (int argc, char *argv[]) { printf("hello world.\n"); return 0;}
+bash: syntax error near unexpected token `('
+[dgray43@gsuad.gsu.edu@snowball ~]$ vi hello.c
+[dgray43@gsuad.gsu.edu@snowball ~]$ [dgray43@gsuad.gsu.edu@snowball ~]$ cat hello.c
+
+ world
+*/
+
+#include <stdio.h>
+
+int main (int argc, char *argv[]) {
+
+   printf("hello world.\n");
+
+   return 0;
+}
+[dgray43@gsuad.gsu.edu@snowball ~]$ vi hello.c
+[dgray43@gsuad.gsu.edu@snowball ~]$ [dgray43@gsuad.gsu.edu@snowball ~]$ cat hello.c
+/*
+*       hello world
+*       */
+
+#include <stdio.h>
+
+int main (int argc, char *argv[]) {
+
+   printf("hello world.\n");
+
+   return 0;
+}
+[dgray43@gsuad.gsu.edu@snowball ~]$ vi hello.c
+[dgray43@gsuad.gsu.edu@snowball ~]$ [dgray43@gsuad.gsu.edu@snowball ~]$ cat hello.c
+/*
+ *      hello world
+ *      */
+
+#include <stdio.h>
+
+int main (int argc, char *argv[]) {
+
+   printf("hello world.\n");
+
+   return 0;
+}
+[dgray43@gsuad.gsu.edu@snowball ~]$ gcc hello.c -o hello
+[dgray43@gsuad.gsu.edu@snowball ~]$ ls -l
+total 44
+-rwxrwxr-x. 1 dgray43@gsuad.gsu.edu dgray43@gsuad.gsu.edu  8360 Jan 24 13:44 hello
+-rw-rw-r--. 1 dgray43@gsuad.gsu.edu dgray43@gsuad.gsu.edu   129 Jan 24 13:44 hello.c
+-rw-rw-r--. 1 dgray43@gsuad.gsu.edu dgray43@gsuad.gsu.edu 24576 Jan 24 13:43 lab1.log
+[dgray43@gsuad.gsu.edu@snowball ~]$ ./hello
+hello world.
+[dgray43@gsuad.gsu.edu@snowball ~]$ gcc hello.c -S
+[dgray43@gsuad.gsu.edu@snowball ~]$ ls
+hello  hello.c  hello.s  lab1.log
+[dgray43@gsuad.gsu.edu@snowball ~]$ cat hello.s
+        .file   "hello.c"
+        .section        .rodata
+.LC0:
+        .string "hello world."
+        .text
+        .globl  main
+        .type   main, @function
+main:
+.LFB0:
+        .cfi_startproc
+        pushq   %rbp
+        .cfi_def_cfa_offset 16
+        .cfi_offset 6, -16
+        movq    %rsp, %rbp
+        .cfi_def_cfa_register 6
+        subq    $16, %rsp
+        movl    %edi, -4(%rbp)
+        movq    %rsi, -16(%rbp)
+        movl    $.LC0, %edi
+        call    puts
+        movl    $0, %eax
+        leave
+        .cfi_def_cfa 7, 8
+        ret
+        .cfi_endproc
+.LFE0:
+        .size   main, .-main
+        .ident  "GCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-44)"
+        .section        .note.GNU-stack,"",@progbits
+[dgray43@gsuad.gsu.edu@snowball ~]$ cp hello.s hello_original.s
+[dgray43@gsuad.gsu.edu@snowball ~]$ vi hello.s
+[dgray43@gsuad.gsu.edu@snowball ~]$ [dgray43@gsuad.gsu.edu@snowball ~]$ diff hello_original.s hello.s
+4c4
+<       .string "hello world."
+---
+>       .string "Hello World."
+[dgray43@gsuad.gsu.edu@snowball ~]$ gcc -c hello.s
+[dgray43@gsuad.gsu.edu@snowball ~]$ ls
+hello  hello.c  hello.o  hello_original.s  hello.s  lab1.log
+[dgray43@gsuad.gsu.edu@snowball ~]$ gcc hello.o -o hello2
+[dgray43@gsuad.gsu.edu@snowball ~]$ ls
+hello  hello2  hello.c  hello.o  hello_original.s  hello.s  lab1.log
+[dgray43@gsuad.gsu.edu@snowball ~]$ ./hello2
+Hello World.
+[dgray43@gsuad.gsu.edu@snowball ~]$ gcc -v -c hello.s
+Using built-in specs.
+COLLECT_GCC=gcc
+Target: x86_64-redhat-linux
+Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-initfini-array --disable-libgcj --with-isl=/builddir/build/BUILD/gcc-4.8.5-20150702/obj-x86_64-redhat-linux/isl-install --with-cloog=/builddir/build/BUILD/gcc-4.8.5-20150702/obj-x86_64-redhat-linux/cloog-install --enable-gnu-indirect-function --with-tune=generic --with-arch_32=x86-64 --build=x86_64-redhat-linux
+Thread model: posix
+gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
+COLLECT_GCC_OPTIONS='-v' '-c' '-mtune=generic' '-march=x86-64'
+ as -v --64 -o hello.o hello.s
+GNU assembler version 2.27 (x86_64-redhat-linux) using BFD version version 2.27-44.base.el7_9.1
+COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-c' '-mtune=generic' '-march=x86-64'
+[dgray43@gsuad.gsu.edu@snowball ~]$ ./hello
+hello world.
+[dgray43@gsuad.gsu.edu@snowball ~]$ ./hello2
+Hello World.
+[dgray43@gsuad.gsu.edu@snowball ~]$
