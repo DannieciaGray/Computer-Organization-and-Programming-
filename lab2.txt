@@ -1,0 +1,43 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\danni> sftp dgray43@snowball.cs.gsu.edu
+dgray43@snowball.cs.gsu.edu's password:
+Connected to snowball.cs.gsu.edu.
+sftp> ls
+hello               hello.c             hello.o             hello.s             hello2              hello_original.s    
+lab1.log            lab2_example.o      lab2_example.s      lab2_example1       lab2_example2       log2.log            
+sftp> lls lab2*
+ Volume in drive C is OS
+ Volume Serial Number is BAB4-C94F
+
+ Directory of C:\Users\danni
+
+01/31/2025  02:03 PM             8,368 lab2_example1
+               1 File(s)          8,368 bytes
+               0 Dir(s)  592,240,771,072 bytes free
+sftp> put lab2_example.s
+stat lab2_example.s: No such file or directory
+sftp> put lab2_example.s
+stat lab2_example.s: No such file or directory
+sftp> ls
+hello               hello.c             hello.o             hello.s             hello2              hello_original.s    
+lab1.log            lab2_example.o      lab2_example.s      lab2_example1       lab2_example2       log2.log
+
+sftp> get lab2_example.s
+Fetching /home/dgray43/lab2_example.s to lab2_example.s
+lab2_example.s                                                                        100% 1000   108.5KB/s   00:00
+sftp> lls lab2*
+ Volume in drive C is OS
+ Volume Serial Number is BAB4-C94F
+
+ Directory of C:\Users\danni
+
+01/31/2025  02:07 PM             1,000 lab2_example.s
+01/31/2025  02:03 PM             8,368 lab2_example1
+               2 File(s)          9,368 bytes
+               0 Dir(s)  592,240,291,840 bytes free
+sftp> quit
+PS C:\Users\danni>
