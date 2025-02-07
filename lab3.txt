@@ -1,0 +1,104 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\danni> ssh dgray43@snowball.cs.gsu.edu
+dgray43@snowball.cs.gsu.edu's password:
+Last login: Fri Feb  7 13:55:11 2025 from 131.96.221.93
+   +
+   |   GSU Computer Science
+   |   Instructional Server
+   |   SNOWBALL.cs.gsu.edu
+   +
+[dgray43@gsuad.gsu.edu@snowball ~]$ ls
+hello    hello_original.s  lab2_example1   lab31to20       lab3_1to20even.c  lab3.log  loop_decrement
+hello2   hello.s           lab2_example2   lab3_1to20      lab3_1to20odd     log2.log  loop_decrement.c
+hello.c  lab1.log          lab2_example.o  lab3_1to20.c    lab3_1to20odd.c   loop      loop_decrement.s
+hello.o  lab2_1to20odd.c   lab2_example.s  lab3_1to20even  lab3_1to20.s      loop.c    loop.s
+[dgray43@gsuad.gsu.edu@snowball ~]$ cat loop.c
+// Print numbers from 0 to 5
+#include <stdio.h>
+
+int main() {
+  int i;
+
+  for (i = 0; i < 6; i++) {
+    printf("%d ", i);
+  }
+  printf("\n");
+  return 0;
+}
+[dgray43@gsuad.gsu.edu@snowball ~]$ cat loop_decrement.c
+// Print numbers from 5 to 1
+#include <stdio.h>
+
+int main(){
+        int i;
+
+        for(i = 5; i>0; i--) {
+                printf("%d ",i);
+        }
+        printf("\n");
+        return 0;
+}
+[dgray43@gsuad.gsu.edu@snowball ~]$ cat lab3_1to20.c
+//Print numbers from 1 to 20
+#include <stdio.h>
+
+int main(){
+        int i;
+
+        for (i = 1; i <= 20; i++) {
+                printf(" %d ", i);
+        }
+        printf(" \n ");
+        return 0;
+}
+[dgray43@gsuad.gsu.edu@snowball ~]$ cat lab3_1to20even.c
+//Print even numbers from 1 to 20
+#include <stdio.h>
+
+int main() {
+  int i;
+
+  for (i = 2; i <= 20; i+=2) { // start from 2 and increment by 2
+    printf(" %d ", i);
+  }
+  printf(" \n ");
+  return 0;
+}
+[dgray43@gsuad.gsu.edu@snowball ~]$ cat lab3_1to20odd.c
+//Print odd numbers from 1 to 20
+#include <stdio.h>
+
+int main() {
+    int i;
+
+    for (i = 1; i <= 20; i += 2) {  // Start from 1 and increment by 2
+        printf(" %d ", i);
+    }
+    printf(" \n ");
+
+    return 0;
+}
+
+[dgray43@gsuad.gsu.edu@snowball ~]$ gcc loop.c -o loop
+[dgray43@gsuad.gsu.edu@snowball ~]$ ./loop
+0 1 2 3 4 5
+[dgray43@gsuad.gsu.edu@snowball ~]$ gcc loop_decrement.c -o loop_decrement
+[dgray43@gsuad.gsu.edu@snowball ~]$ ./loop_decrement
+5 4 3 2 1
+[dgray43@gsuad.gsu.edu@snowball ~]$ gcc lab3_1to20.c -o lab3_1to20
+[dgray43@gsuad.gsu.edu@snowball ~]$ ./lab3_1to20
+ 1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20
+ [dgray43@gsuad.gsu.edu@snowball ~]$ gcc lab3_1to20even.c -o lab3_1to20even
+[dgray43@gsuad.gsu.edu@snowball ~]$ ./lab3_1to20even
+ 2  4  6  8  10  12  14  16  18  20
+ [dgray43@gsuad.gsu.edu@snowball ~]$ gcc lab3_1to20odd.c -o lab3_1to20odd
+[dgray43@gsuad.gsu.edu@snowball ~]$ ./lab3_1to20odd
+ 1  3  5  7  9  11  13  15  17  19
+[dgray43@gsuad.gsu.edu@snowball ~]$ exit
+logout
+Connection to snowball.cs.gsu.edu closed.
+PS C:\Users\danni>
