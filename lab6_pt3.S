@@ -1,4 +1,4 @@
-# This code performs a NOT operation 
+# This code performs a NOT operation
 .text
     # Load values into registers
     la x7, int1
@@ -6,11 +6,17 @@
     la x7, int2
     lw x6, 0(x7)   # Load int2 into x6
 
-    sub x7, x6, x5  # Perform int2 - int1 (Reversed Subtraction)
+    not x5, x5      # Perform bitwise NOT on int1
+    sub x7, x6, x5  # Perform int2 - NOT(int1)
 
     # Store result in memory
     la x8, diff
     sw x7, 0(x8)
+
+    # Print operation description
+    li a0, 4
+    la a1, str3
+    ecall
 
     # Print first operand (int2)
     li a0, 1
@@ -22,7 +28,7 @@
     li a1, 45
     ecall
 
-    # Print second operand (int1)
+    # Print second operand (NOT int1)
     li a0, 1
     mv a1, x5
     ecall
@@ -44,6 +50,7 @@
 
 # Data section, initialized variables 
 .data
+str3: .string "Not result: "  # String for NOT operation
 int1: .word 12
 int2: .word 5
-diff: .word 0  # Stores result of int2 - int1
+diff: .word 0  # Stores result of int2 - NOT(int1)
